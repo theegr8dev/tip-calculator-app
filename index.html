@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Tip calculator app</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">SPLI <span>TTER</span></div>
+    <div class="container">
+      <div class="left">
+        <form class="bill">
+          <label for="bill__title">Bill</label>
+          <input
+            type="number"
+            id="bill"
+            name="bill"
+            class="bill__input"
+            placeholder="0"
+          />
+        </form>
+        <div class="selection">Select Tip %</div>
+        <div class="percent">
+          <button class="percent__btn five">5%</button>
+          <button class="percent__btn ten">10%</button>
+          <button class="percent__btn fifteen">15%</button>
+          <button class="percent__btn twenty-five">25%</button>
+          <button class="percent__btn fifty">50%</button>
+          <input type="number" class="custom" placeholder="CUSTOM" />
+        </div>
+        <form class="people">
+          <label for="people__title" class="people-paragraph"
+            >Number of people <span class="error"></span
+          ></label>
+          <input
+            type="number"
+            id="people"
+            name="people"
+            placeholder="0"
+            class="people__input"
+          />
+        </form>
+      </div>
+      <div class="right">
+        <div class="tip">
+          <p class="tip__paragraph">
+            Tip Amount<span class="right-span">/person</span>
+          </p>
+          <span class="right__amount"
+            >$<span class="tip__amount">0.00</span>
+          </span>
+        </div>
+        <div class="total">
+          <p class="total__paragraph">
+            Total<span class="right-span">/person</span>
+          </p>
+          <span class="right__amount"
+            >$<span class="total__amount">0.00</span>
+          </span>
+        </div>
+        <button class="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Alabi Khalid</a>.
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
