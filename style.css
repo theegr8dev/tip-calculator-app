@@ -15,12 +15,26 @@ body {
   font-size: 1.8rem;
   font-weight: 700;
 }
+/* Utilities */
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  background-color: hsl(189, 41%, 97%);
+  border: none;
+  padding: 1rem 1.5rem;
+  direction: rtl;
+  writing-mode: horizontal-tb;
+  font-size: 2rem;
+  outline: none;
+}
+/* Utilities */
 
 .container {
   background-color: hsl(0, 0%, 100%);
   max-width: 1000px;
   margin: 0 auto;
-
   padding: 3rem 5.5rem;
   display: flex;
   justify-content: space-between;
@@ -35,22 +49,7 @@ body {
   font-weight: 700;
   font-size: 2.5rem;
 }
-form {
-  display: flex;
-  flex-direction: column;
-}
-input {
-  background-color: hsl(189, 41%, 97%);
-  border: none;
-  padding: 1rem 1.5rem;
-  direction: rtl;
-  writing-mode: horizontal-tb;
-  font-size: 2rem;
-  outline: none;
-}
-.custom {
-  width: 100%;
-}
+
 .left {
   width: 45%;
 }
@@ -66,10 +65,8 @@ input {
 }
 .percent {
   width: 100%;
-
   display: grid;
   grid-template-columns: repeat(auto-fill, 30%);
-  /* justify-content: space-between; */
   gap: 2rem;
   margin-bottom: 4rem;
 }
@@ -86,7 +83,7 @@ input {
 .custom {
   background-color: hsl(189, 41%, 97%);
   color: hsl(183, 100%, 15%);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 .custom:hover {
   border: 3px solid hsl(172, 67%, 45%);
@@ -156,6 +153,7 @@ input {
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
 @media screen and (max-width: 62.375rem) {
   .percent {
     grid-template-columns: repeat(auto-fill, 45%);
@@ -163,14 +161,23 @@ input {
 }
 
 @media screen and (max-width: 37.4375rem) {
+  html {
+    font-size: 50%;
+  }
   .container {
     flex-direction: column;
-    margin-bottom: 5rem;
-
     padding: 3rem 3rem;
+    border-radius: 30px 30px 0 0;
   }
   .header {
     margin-block: 5rem 3rem;
+  }
+  .custom {
+    font-size: 2.5rem;
+  }
+  input {
+    padding-block: 2rem;
+    font-size: 3rem;
   }
   .left,
   .right {
