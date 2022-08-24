@@ -1,11 +1,7 @@
-const btnFive = document.querySelector(".five");
-const btnTen = document.querySelector(".ten");
-const btnFifteen = document.querySelector(".fifteen");
-const btnTwentyFive = document.querySelector(".twenty-five");
-const btnFifty = document.querySelector(".fifty");
-const btnCustom = document.querySelector(".custom");
-const percent = [btnFive, btnTen, btnFifteen, btnTwentyFive, btnFifty];
+const percent = document.querySelector(".percent");
+let selectedPercent;
 
+const btnCustom = document.querySelector(".custom");
 const billValue = document.querySelector(".bill__input");
 const peopleValue = document.querySelector(".people__input");
 
@@ -18,11 +14,11 @@ function Formula(percentAmount) {
   if (Number(peopleValue.value) > 0) {
     peopleValue.style.border = "none";
     document.querySelector(".error").textContent = "";
-
+    // Formaula for total amount per person
     const totalAmount =
       (percentAmount * Number(billValue.value)) / Number(peopleValue.value);
     labelTip.textContent = parseFloat(totalAmount.toFixed(2));
-
+    // Formaula for tip amount per person
     const tipAmount =
       (Number(billValue.value) * (percentAmount + 1)) /
       Number(peopleValue.value);
@@ -32,19 +28,39 @@ function Formula(percentAmount) {
     document.querySelector(".error").textContent = "Cant't be Zero";
   }
 }
-percent.forEach(function (per) {
-  per.addEventListener("click", function () {
-    const percentAmount = Number(per.textContent.slice(0, -1) / 100);
-    Formula(percentAmount);
-    if (Number(peopleValue.value) > 0) {
-      per.style.backgroundColor = "hsl(172, 67%, 45%)";
+// Performing event delegation
+percent.addEventListener("click", function (event) {
+  const target = event.target;
+  const percentAmount = parseInt(target.textContent || 0) / 100;
+  Formula(percentAmount);
+
+  if (
+    target.classList.contains("percent__btn") &&
+    Number(peopleValue.value) > 0
+  ) {
+    select(target);
+    if (btnCustom) {
+      btnCustom.value = "";
     }
-  });
+  }
 });
 
-btnCustom.addEventListener("click", function () {
-  const percentAmount = Number(btnCustom.value / 100);
-  Formula(percentAmount);
+function select(ele) {
+  if (selectedPercent) {
+    selectedPercent.style.backgroundColor = "hsl(183, 100%, 15%)";
+  }
+  selectedPercent = ele;
+  selectedPercent.style.backgroundColor = "hsl(172, 67%, 45%)";
+}
+
+btnCustom.addEventListener("keypress", function (event) {
+  if (selectedPercent)
+    selectedPercent.style.backgroundColor = "hsl(183, 100%, 15%)";
+
+  if (event.key == "Enter") {
+    const percentAmount = Number(btnCustom.value / 100);
+    Formula(percentAmount);
+  }
 });
 
 btnReset.addEventListener("click", function () {
@@ -53,5 +69,7 @@ btnReset.addEventListener("click", function () {
   labelTip.textContent = "0.00";
   labelTotal.textContent = "0.00";
   btnCustom.value = "";
-  percent.forEach((per) => (per.style.backgroundColor = "hsl(183, 100%, 15%)"));
+  if (selectedPercent) {
+    selectedPercent.style.backgroundColor = "hsl(183, 100%, 15%)";
+  }
 });
