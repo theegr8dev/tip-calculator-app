@@ -17,12 +17,13 @@ function Formula(percentAmount) {
     // Formaula for total amount per person
     const totalAmount =
       (percentAmount * Number(billValue.value)) / Number(peopleValue.value);
-    labelTip.textContent = parseFloat(totalAmount.toFixed(2));
+    labelTip.textContent = totalAmount.toFixed(2);
+
     // Formaula for tip amount per person
     const tipAmount =
       (Number(billValue.value) * (percentAmount + 1)) /
       Number(peopleValue.value);
-    labelTotal.textContent = parseFloat(tipAmount.toFixed(2));
+    labelTotal.textContent = tipAmount.toFixed(2);
   } else {
     peopleValue.style.border = " 3px solid orangered";
     document.querySelector(".error").textContent = "Cant't be Zero";
@@ -68,7 +69,7 @@ btnReset.addEventListener("click", function () {
   peopleValue.value = "";
   labelTip.textContent = "0.00";
   labelTotal.textContent = "0.00";
-  btnCustom.value = "";
+  btnCustom.value = 0;
   if (selectedPercent) {
     selectedPercent.style.backgroundColor = "hsl(183, 100%, 15%)";
   }
